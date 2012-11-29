@@ -36,7 +36,7 @@ end
   end
 
   execute "Add ssh key to user" do
-    command 'ssh-keygen -b 4096 -t rsa -N "" -f /data/disk/o#{boa_user}/.ssh/id_rsa'
+    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/o#{boa_user}/.ssh/id_rsa"
     creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
   end
 
