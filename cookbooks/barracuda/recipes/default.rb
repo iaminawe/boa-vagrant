@@ -1,66 +1,49 @@
 Chef::Log.debug("Running barracuda recipe")
 
-execute "Download BOA-installer" do
-  command "wget -q -U iCab http://files.aegir.cc/BOA.sh.txt"
+remote_file "/tmp/BOA.sh" do
+  source "http://files.aegir.cc/BOA.sh.txt"
+  mode 00755
 end
 
-execute "Run installer" do
-  command "bash BOA.sh.txt"
-end  
-
-# Add o1
-
-execute "Setup a BOA instance" do
-  command "boa in-stable local lars@intraface.dk mini"
+execute "/tmp/BOA.sh" do
+  creates "/usr/local/bin/boa"
 end
 
-execute "Prepare user with ssh directory" do
-  command "chsh -s /bin/bash o1"
-  command "su o1"
-  command "mkdir -p ~/.ssh"
-  command "chmod 700 ~/.ssh"
+execute "Run the BOA Installer o1" do
+  command "boa in-stable local lars@intraface.dk aegir.local o1 mini"
 end
 
-execute "Add ssh key to user" do
-  command "ssh-keygen -b 4096 -t rsa -N "" -f ~/.ssh/id_rsa"
-end
-
-# Add o2
-
-execute "Setup a BOA instance" do
+execute "Run the BOA Installer o2" do
   command "boa in-stable local lars@intraface.dk aegir.local o2 mini"
 end
 
-execute "Prepare user with ssh directory" do
-  command "chsh -s /bin/bash o2"
-  command "su o2"
-  command "mkdir -p ~/.ssh"
-  command "chmod 700 ~/.ssh"
-end
-
-execute "Add ssh key to user" do
-  command "ssh-keygen -b 4096 -t rsa -N "" -f ~/.ssh/id_rsa"
-end
-
-# Add o3
-
-execute "Setup a BOA instance" do
+execute "Run the BOA Installer o3" do
   command "boa in-stable local lars@intraface.dk aegir.local o3 mini"
 end
 
-execute "Prepare user with ssh directory" do
-  command "chsh -s /bin/bash o3"
-  command "su o3"
-  command "mkdir -p ~/.ssh"
-  command "chmod 700 ~/.ssh"
-end
+(1..3).each do |boa_user|
 
-execute "Add ssh key to user" do
-  command "ssh-keygen -b 4096 -t rsa -N "" -f ~/.ssh/id_rsa"
+  user "o#{boa_user}" do
+    supports :manage_home => true
+    home "/data/disk/o#{boa_user}"
+    shell "/bin/bash"
+  end
+
+  directory "/data/disk/o#{boa_user}/.ssh" do
+    owner "o#{boa_user}"
+    mode 00700
+    recursive true
+  end
+
+  execute "Add ssh key to user" do
+    command 'ssh-keygen -b 4096 -t rsa -N "" -f /data/disk/o#{boa_user}/.ssh/id_rsa'
+    creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
+  end
+
 end
 
 # Rebuild VirtualBox Guest Additions
 # http://vagrantup.com/v1/docs/troubleshooting.html
-execute "Add ssh key to user" do
+execute "Rebuild VirtualBox Guest Additions" do
   command "sudo /etc/init.d/vboxadd setup"
 end
