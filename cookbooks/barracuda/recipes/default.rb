@@ -31,6 +31,7 @@ end
 
   directory "/data/disk/o#{boa_user}/.ssh" do
     owner "o#{boa_user}"
+    group "users"
     mode 00700
     recursive true
   end
