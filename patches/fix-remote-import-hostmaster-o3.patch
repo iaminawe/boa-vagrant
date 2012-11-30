@@ -1,0 +1,13 @@
+diff --git a/hostmaster/hostmaster_service.inc b/hostmaster/hostmaster_service.inc
+index 7b76873..0427359 100644
+--- a/hostmaster/hostmaster_service.inc
++++ b/hostmaster/hostmaster_service.inc
+@@ -88,7 +88,7 @@ class provisionService_remote_import_hostmaster extends provisionService_remote_
+     $remote_backup_file = $this->remote_backup($site);
+     
+     // And now fetch that backup.
+-    $local_file = d('@hostmaster')->platform->server->backup_path . '/' . basename($remote_backup_file);
++    $local_file = '/data/disk/o1/backups/' . basename($remote_backup_file);
+     $this->fetch($remote_backup_file, $local_file);
+     
+     // And now delete the backup just fetched.
