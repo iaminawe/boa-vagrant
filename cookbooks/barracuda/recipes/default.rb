@@ -10,15 +10,18 @@ execute "/tmp/BOA.sh" do
 end
 
 execute "Run the BOA Installer o1" do
-  command "boa in-stable local lars@intraface.dk aegir.local o1 mini"
+  user "root"
+  command "boa in-stable local lars@intraface.dk max"
 end
 
 execute "Run the BOA Installer o2" do
-  command "boa in-stable local lars@intraface.dk aegir.local o2 mini"
+  user "root"
+  command "boa in-stable local lars@intraface.dk aegir.local o2 max"
 end
 
 execute "Run the BOA Installer o3" do
-  command "boa in-stable local lars@intraface.dk aegir.local o3 mini"
+  user "root"
+  command "boa in-stable local lars@intraface.dk aegir.local o3 max"
 end
 
 (1..3).each do |boa_user|
@@ -39,6 +42,18 @@ end
   execute "Add ssh key to user" do
     command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/o#{boa_user}/.ssh/id_rsa"
     creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
+  end
+
+  directory "/data/disk/o#{boa_user}" do
+    owner "o#{boa_user}"
+    group "users"
+    recursive true
+    :update
+  end
+
+  execute "Run BOA Tool to fix permissions" do
+    user "root"
+    command "bash /var/xdrago/usage.sh"
   end
 
 end
