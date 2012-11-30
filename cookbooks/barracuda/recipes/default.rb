@@ -44,6 +44,8 @@ end
     creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
   end
 
+  # It is not actually possible to set the permissions for a mounted directory
+  # in Virtual box - not even from the command line. This is handled by the Vagrantfile
   directory "/data/disk/o#{boa_user}" do
     owner "o#{boa_user}"
     group "users"
@@ -51,11 +53,22 @@ end
     :update
   end
 
-  execute "Run BOA Tool to fix permissions" do
-    user "root"
-    command "bash /var/xdrago/usage.sh"
+  # Only necessary as long as there is a but
+  remote_file "/tmp/fix-remote-import-hostmaster-o#{boa_user}.patch" do
+    source "https://raw.github.com/lsolesen/boa-vagrant/master/patches/fix-remote-import-hostmaster-o#{boa_user}.patch"
+    mode 00755
   end
 
+  execute "Apply Remote Import hostmaster patch" do
+    cwd "/data/disk/o#{boa_user}/.drush/provision/remote_import"
+    command "patch -p1 < /tmp/fix-remote-import-hostmaster-o#{boa_user}.patch"
+  end
+
+end
+
+execute "Run BOA Tool to fix permissions" do
+  user "root"
+  command "bash /var/xdrago/usage.sh"
 end
 
 # Rebuild VirtualBox Guest Additions

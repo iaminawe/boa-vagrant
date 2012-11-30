@@ -31,9 +31,9 @@ Vagrant::Config.run do |config|
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  config.vm.share_folder "platforms-o1", "/data/disk/o1/static", "~/workspace/platforms-o1", :extra => "dmode=755,fmode=755,gid=100,uid=110"
-  config.vm.share_folder "platforms-o2", "/data/disk/o2/static", "~/workspace/platforms-o2", :extra => "dmode=755,fmode=755,gid=100,uid=112"
-  config.vm.share_folder "platforms-o3", "/data/disk/o3/static", "~/workspace/platforms-o3", :extra => "dmode=755,fmode=755,gid=100,uid=113"
+  config.vm.share_folder "platforms-o1", "/data/disk/o1/static", "~/workspace/platforms-o1", :extra => "dmode=755,fmode=755,gid=1000,uid=1001"
+  config.vm.share_folder "platforms-o2", "/data/disk/o2/static", "~/workspace/platforms-o2", :extra => "dmode=755,fmode=755,gid=1000,uid=1002"
+  config.vm.share_folder "platforms-o3", "/data/disk/o3/static", "~/workspace/platforms-o3", :extra => "dmode=755,fmode=755,gid=1000,uid=1003"
   
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe "barracuda"    
