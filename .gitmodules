@@ -1,3 +1,6 @@
 [submodule "ssh_known_hosts"]
 	path = cookbooks/ssh_known_hosts
 	url = https://github.com/opscode-cookbooks/ssh_known_hosts.git
+[submodule "cookbooks/ssh_known_hosts"]
+	path = cookbooks/ssh_known_hosts
+	url = https://github.com/opscode-cookbooks/ssh_known_hosts.git
