@@ -10,17 +10,14 @@ execute "/tmp/BOA.sh" do
 end
 
 execute "Run the BOA Installer o1" do
-  user "root"
   command "boa in-stable local lars@intraface.dk max"
 end
 
 execute "Run the BOA Installer o2" do
-  user "root"
   command "boa in-stable local lars@intraface.dk aegir.local o2 max"
 end
 
 execute "Run the BOA Installer o3" do
-  user "root"
   command "boa in-stable local lars@intraface.dk aegir.local o3 max"
 end
 
@@ -42,15 +39,6 @@ end
   execute "Add ssh key to user" do
     command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/o#{boa_user}/.ssh/id_rsa"
     creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
-  end
-
-  # It is not actually possible to set the permissions for a mounted directory
-  # in Virtual box - not even from the command line. This is handled by the Vagrantfile
-  directory "/data/disk/o#{boa_user}" do
-    owner "o#{boa_user}"
-    group "users"
-    recursive true
-    :update
   end
 
   # Only necessary as long as there is a but
