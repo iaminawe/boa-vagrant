@@ -35,6 +35,7 @@ Vagrant::Config.run do |config|
   config.vm.share_folder "themes", "/data/all/o_custom_themes", "~/workspace/themes", :extra => "dmode=755,fmode=755,gid=0,uid=0"
 
   config.vm.provision :chef_solo do |chef|
-    chef.add_recipe "barracuda"    
+    chef.add_recipe "ssh_known_hosts"
+    chef.add_recipe "barracuda"
   end
 end
