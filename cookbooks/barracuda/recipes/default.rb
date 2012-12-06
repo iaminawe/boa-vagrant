@@ -41,6 +41,18 @@ end
     creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
   end
 
+  file "/data/disk/o#{boa_user}/.ssh/id_rsa" do
+    owner "o#{boa_user}"
+    group "users"
+    mode 00600
+  end
+  
+  file "/data/disk/o#{boa_user}/.ssh/id_rsa.pub" do
+    owner "o#{boa_user}"
+    group "users"
+    mode 00600
+  end  
+
   # Only necessary as long as there is a but
   remote_file "/tmp/fix-remote-import-hostmaster-o#{boa_user}.patch" do
     source "https://raw.github.com/lsolesen/boa-vagrant/master/patches/fix-remote-import-hostmaster-o#{boa_user}.patch"
