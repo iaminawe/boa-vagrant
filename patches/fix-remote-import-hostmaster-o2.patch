@@ -7,7 +7,7 @@ index 7b76873..0427359 100644
      
      // And now fetch that backup.
 -    $local_file = d('@hostmaster')->platform->server->backup_path . '/' . basename($remote_backup_file);
-+    $local_file = '/data/disk/o1/backups/' . basename($remote_backup_file);
++    $local_file = '/data/disk/o2/backups/' . basename($remote_backup_file);
      $this->fetch($remote_backup_file, $local_file);
      
      // And now delete the backup just fetched.
