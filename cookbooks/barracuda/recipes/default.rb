@@ -14,11 +14,11 @@ execute "Run the BOA Installer o1" do
 end
 
 execute "Run the BOA Installer o2" do
-  command "boa in-stable local lars@iaminawe.com aegir.local o2 max"
+  command "boa in-stable local gregg@iaminawe.com aegir.local o2 max"
 end
 
 execute "Run the BOA Installer o3" do
-  command "boa in-stable local lars@iaminawe.com aegir.local o3 max"
+  command "boa in-stable local gregg@iaminawe.com aegir.local o3 max"
 end
 
 (1..3).each do |boa_user|
