@@ -10,18 +10,9 @@ execute "/tmp/BOA.sh" do
 end
 
 execute "Run the BOA Installer o1" do
-  command "boa in-stable local gregg@iaminawe.com max"
+  command "boa in-stable local gregg@iaminawe.com mini"
 end
 
-execute "Run the BOA Installer o2" do
-  command "boa in-stable local gregg@iaminawe.com aegir.local o2 max"
-end
-
-execute "Run the BOA Installer o3" do
-  command "boa in-stable local gregg@iaminawe.com aegir.local o3 max"
-end
-
-(1..3).each do |boa_user|
 
   user "o#{boa_user}" do
     supports :manage_home => true
@@ -64,7 +55,6 @@ end
     command "patch -p1 < /tmp/fix-remote-import-hostmaster-o#{boa_user}.patch"
   end
 
-end
 
 execute "Run BOA Tool to fix permissions" do
   user "root"
