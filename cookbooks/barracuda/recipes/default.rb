@@ -66,3 +66,24 @@ end
 execute "Rebuild VirtualBox Guest Additions" do
   command "sudo /etc/init.d/vboxadd setup"
 end
+
+
+# Setup the relevant file system packages to share mounted folders
+
+package "nfs-kernel-server"
+package "nfs-common"
+package "rpcbind"
+template '/etc/exports' do
+  source "exports.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  action :create
+end
+script "nfs_restart" do
+  interpreter "bash"
+  user "root"
+  code <<-EOH
+/etc/init.d/nfs-kernel-server restart
+  EOH
+end
