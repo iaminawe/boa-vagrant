@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-  config.vm.box = "base"
+  config.vm.box = "lucid32"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -27,18 +27,19 @@ Vagrant::Config.run do |config|
   # config.vm.forward_port 80, 8080
 
   config.vm.customize ["modifyvm", :id, "--memory", 1024]
-
-  # Share an additional folder to the guest VM. The first argument is
+  
+    # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  config.vm.share_folder "modules", "/data/all/o_custom_modules", "~/workspace/modules", :extra => "dmode=755,fmode=755,gid=0,uid=0"
-  config.vm.share_folder "themes", "/data/all/o_custom_themes", "~/workspace/themes", :extra => "dmode=755,fmode=755,gid=0,uid=0"
-   
-   config.vm.share_folder "platforms-o1", "/data/disk/o1/static", "~/workspace/platforms", :extra => "dmode=777,fmode=777"
-
-  config.vm.provision :chef_solo do |chef|
+ 
+  config.vm.share_folder "modules", "/data/all/o_custom_modules", "~/workspace/modules", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
+  config.vm.share_folder "themes", "/data/all/o_custom_themes", "~/workspace/themes", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
+  config.vm.share_folder "platforms-o1", "/data/disk/o1/static", "~/workspace/platforms", :extra => "dmode=777,fmode=777", :nfs => true
+  
+    config.vm.provision :chef_solo do |chef|
     # chef.data_bags_path = "data_bags"
     # chef.add_recipe "ssh_known_hosts"
     chef.add_recipe "barracuda"
   end
+
 end
