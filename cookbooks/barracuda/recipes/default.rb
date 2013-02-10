@@ -45,15 +45,15 @@ end
   end  
 
   # Only necessary as long as there is a but
-  remote_file "/tmp/fix-remote-import-hostmaster-o1.patch" do
-    source "https://raw.github.com/lsolesen/boa-vagrant/master/patches/fix-remote-import-hostmaster-o1.patch"
-    mode 00755
-  end
+ # remote_file "/tmp/fix-remote-import-hostmaster-o1.patch" do
+ #   source "https://raw.github.com/lsolesen/boa-vagrant/master/patches/fix-remote-import-hostmaster-o1.patch"
+  #  mode 00755
+ # end
 
-  execute "Apply Remote Import hostmaster patch" do
-    cwd "/data/disk/o1/.drush/provision/remote_import"
-    command "patch -p1 < /tmp/fix-remote-import-hostmaster-o1.patch"
-  end
+ # execute "Apply Remote Import hostmaster patch" do
+#    cwd "/data/disk/o1/.drush/provision/remote_import"
+#    command "patch -p1 < /tmp/fix-remote-import-hostmaster-o1.patch"
+ # end
 
 
 execute "Run BOA Tool to fix permissions" do
