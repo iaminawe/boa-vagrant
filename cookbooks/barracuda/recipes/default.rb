@@ -54,7 +54,6 @@ end
     command "patch -p1 < /tmp/fix-remote-import-hostmaster-o1.patch"
   end
 
-end
 
 execute "Run BOA Tool to fix permissions" do
   user "root"
