@@ -13,55 +13,45 @@ execute "Run the BOA Installer o1" do
   command "boa in-stable local gregg@iaminawe.com mini"
 end
 
-#execute "Run the BOA Installer o2" do
-#  command "boa in-stable local gregg@iaminawe.com aegir.local o2 mini"
-#end
-
-#execute "Run the BOA Installer o3" do
- # command "boa in-stable local lars@intraface.dk aegir.local o3 max"
-#end
-
-(1..1).each do |boa_user|
-
-  user "o#{boa_user}" do
+  user "o1" do
     supports :manage_home => true
-    home "/data/disk/o#{boa_user}"
+    home "/data/disk/o1"
     shell "/bin/bash"
   end
 
-  directory "/data/disk/o#{boa_user}/.ssh" do
-    owner "o#{boa_user}"
+  directory "/data/disk/o1/.ssh" do
+    owner "o1"
     group "users"
     mode 00700
     recursive true
   end
 
   execute "Add ssh key to user" do
-    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/o#{boa_user}/.ssh/id_rsa"
-    creates "/data/disk/o#{boa_user}/.ssh/id_rsa"
+    command "ssh-keygen -b 4096 -t rsa -N \"\" -f /data/disk/o1/.ssh/id_rsa"
+    creates "/data/disk/o1/.ssh/id_rsa"
   end
 
-  file "/data/disk/o#{boa_user}/.ssh/id_rsa" do
-    owner "o#{boa_user}"
+  file "/data/disk/o1/.ssh/id_rsa" do
+    owner "o1"
     group "users"
     mode 00600
   end
   
-  file "/data/disk/o#{boa_user}/.ssh/id_rsa.pub" do
-    owner "o#{boa_user}"
+  file "/data/disk/o1/.ssh/id_rsa.pub" do
+    owner "o1"
     group "users"
     mode 00600
   end  
 
   # Only necessary as long as there is a but
-  remote_file "/tmp/fix-remote-import-hostmaster-o#{boa_user}.patch" do
-    source "https://raw.github.com/lsolesen/boa-vagrant/master/patches/fix-remote-import-hostmaster-o#{boa_user}.patch"
+  remote_file "/tmp/fix-remote-import-hostmaster-o1.patch" do
+    source "https://raw.github.com/lsolesen/boa-vagrant/master/patches/fix-remote-import-hostmaster-o1.patch"
     mode 00755
   end
 
   execute "Apply Remote Import hostmaster patch" do
-    cwd "/data/disk/o#{boa_user}/.drush/provision/remote_import"
-    command "patch -p1 < /tmp/fix-remote-import-hostmaster-o#{boa_user}.patch"
+    cwd "/data/disk/o1/.drush/provision/remote_import"
+    command "patch -p1 < /tmp/fix-remote-import-hostmaster-o1.patch"
   end
 
 end
