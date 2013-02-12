@@ -44,16 +44,15 @@ end
   end  
 
   # Only necessary as long as there is a but
-  remote_file "/tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch" do
-    source "https://raw.github.com/iaminawe/boa-vagrant/master/patches/fix-remote-import-hostmaster-iaminaweoctopus.patch"
-    mode 00755
-  end
+remote_file "/tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch" do
+  source "https://raw.github.com/iaminawe/boa-vagrant/master/patches/fix-remote-import-hostmaster-iaminaweoctopus.patch"
+  mode 00755
+end
 
-  execute "Apply Remote Import hostmaster patch" do
-    cwd "/data/disk/iaminaweoctopus/.drush/provision/remote_import"
-    command "patch -p1 < /tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch"
-  end
-
+execute "Apply Remote Import hostmaster patch" do
+  cwd "/data/disk/iaminaweoctopus/.drush/provision/remote_import"
+  command "patch -p1 < /tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch"
+end
 
 execute "Run BOA Tool to fix permissions" do
   user "root"

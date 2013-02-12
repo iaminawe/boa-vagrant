@@ -34,7 +34,7 @@ Vagrant::Config.run do |config|
  
 config.vm.share_folder "modules", "/data/all/o_custom_modules", "~/workspace/modules", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
 config.vm.share_folder "themes", "/data/all/o_custom_themes", "~/workspace/themes", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
-# config.vm.share_folder "platforms-o1", "/data/disk/o1/static", "~/workspace/platforms", :extra => "dmode=777,fmode=777", :nfs => true
+#config.vm.share_folder "platforms-o1", "/data/disk/iaminaweoctopus/static", "~/workspace/platforms", :extra => "dmode=777,fmode=777", :nfs => true
   
     config.vm.provision :chef_solo do |chef|
     # chef.data_bags_path = "data_bags"
