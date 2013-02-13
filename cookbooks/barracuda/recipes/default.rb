@@ -1,5 +1,15 @@
 Chef::Log.debug("Running barracuda recipe")
 
+execute "update package index" do
+  command "apt-get update"
+  ignore_failure true
+  action :nothing
+end.run_action(:run)
+
+execute "Install linux headers to allow guest additions to update properly" do
+  command "apt-get install dkms build-essential linux-headers-generic -y"
+end
+
 remote_file "/tmp/BOA.sh" do
   source "http://files.aegir.cc/BOA.sh.txt"
   mode 00755
@@ -9,7 +19,7 @@ execute "/tmp/BOA.sh" do
   creates "/usr/local/bin/boa"
 end
 
-execute "Run the BOA Installer o1" do
+execute "Run the BOA Installer iaminaweoctopus" do
   command "boa in-stable local gregg@iaminawe.com mini iaminaweoctopus"
 end
 
