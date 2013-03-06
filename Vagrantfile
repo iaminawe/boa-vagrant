@@ -32,13 +32,17 @@ Vagrant::Config.run do |config|
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
  
-config.vm.share_folder "modules", "/data/all/o_custom_modules", "~/sites/workspace/modules", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
+config.vm.share_folder "modules", "/data/all/o_custom_modules", "~/workspace/modules", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
 
-config.vm.share_folder "themes", "/data/all/o_custom_themes", "~/sites/workspace/themes", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
+config.vm.share_folder "themes", "/data/all/o_custom_themes", "~/workspace/themes", :extra => "dmode=755,fmode=755,gid=0,uid=0", :nfs => true
 
 #important note- this line needs to be commented out on initial install and then made live once the VM has been built
 
-config.vm.share_folder "platforms-iaminaweoctopus", "/data/disk/iaminaweoctopus/static", "~/sites/workspace/platforms", :extra => "dmode=777,fmode=777", :nfs => true
+config.vm.share_folder "platforms-iaminaweoctopus", "/data/disk/iaminaweoctopus/static", "~/workspace/platforms", :nfs => true
+
+
+  #  config.vm.share_folder "platforms-iaminaweoctopus", "/data/disk/iaminaweoctopus/static", "~/workspace/platforms", :extra => "dmode=777,fmode=777", :nfs => true 
+   # config.bindfs.bind_folder "/data/disk/iaminaweoctopus/static", "/data/disk/iaminaweoctopus/static"
   
     config.vm.provision :chef_solo do |chef|
     # chef.data_bags_path = "data_bags"

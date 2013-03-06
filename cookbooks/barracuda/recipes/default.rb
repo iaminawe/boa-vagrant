@@ -20,7 +20,7 @@ execute "/tmp/BOA.sh" do
 end
 
 execute "Run the BOA Installer iaminaweoctopus" do
-  command "boa in-stable local gregg@iaminawe.com mini iaminaweoctopus"
+  command "boa in-head local gregg@iaminawe.com mini iaminaweoctopus"
 end
 
   user "iaminaweoctopus" do
