@@ -64,10 +64,10 @@ execute "Apply Remote Import hostmaster patch" do
   command "patch -p1 < /tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch"
 end
 
-execute "Run BOA Tool to fix permissions" do
-  user "root"
-  command "bash /var/xdrago/usage.sh"
-end
+#execute "Run BOA Tool to fix permissions" do
+ # user "root"
+#  command "bash /var/xdrago/usage.sh"
+#end
 
 # Rebuild VirtualBox Guest Additions
 # http://vagrantup.com/v1/docs/troubleshooting.html
