@@ -6,9 +6,9 @@ execute "update package index" do
    action :nothing
 end.run_action(:run)
 
-#execute "Install linux headers to allow guest additions to update properly" do
-#  command "apt-get install dkms build-essential linux-headers-generic -y"
-#end
+execute "Install linux headers to allow guest additions to update properly" do
+ command "apt-get install dkms build-essential linux-headers-generic -y"
+end
 
 remote_file "/tmp/BOA.sh" do
   source "http://files.aegir.cc/BOA.sh.txt"
@@ -65,7 +65,7 @@ execute "Apply Remote Import hostmaster patch" do
 end
 
 # Rebuild VirtualBox Guest Additions
-http://vagrantup.com/v1/docs/troubleshooting.html
+#http://vagrantup.com/v1/docs/troubleshooting.html
   execute "Rebuild VirtualBox Guest Additions" do
   command "sudo /etc/init.d/vboxadd setup"
 end
