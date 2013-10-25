@@ -1,4 +1,4 @@
-Barracuda Octopus Aegir Local Dev Environment
+Barracuda Octopus Aegir Vagrant Installer
 ==
 
 Using this you can setup a local BOA server using vagrant and Chef.
