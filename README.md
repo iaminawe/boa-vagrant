@@ -2,14 +2,15 @@ Barracuda Ocopus Aegir setup by Vagrant
 ==
 
 Using this you can setup a local BOA server using vagrant and Chef.
+https://drupal.org/project/boa
+https://drupal.org/project/barracuda
+https://drupal.org/project/octopus
 
 Requirements
 -- 
 
 - http://vagrantup.com/
 - https://github.com/dotless-de/vagrant-vbguest
-
-- 
 
 Getting vagrant in place
 --
