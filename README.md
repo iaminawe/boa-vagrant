@@ -1,10 +1,15 @@
 Barracuda Octopus Aegir Vagrant Installer
 ==
 
-Using this you can setup a local BOA server using vagrant and Chef.
+Using this script you can easily setup a local BOA development environment using Vagrant and Chef.
+
 - https://drupal.org/project/boa
 - https://drupal.org/project/barracuda
 - https://drupal.org/project/octopus
+
+If you setup the hostmaster remote import module (instructions at bottom) correctly, you can import sites from a remote octopus instance that shares the same useranme as this local one.
+
+View how this dev/local/staging workflow can work with this screencast https://vimeo.com/76546448
 
 Requirements
 -- 
