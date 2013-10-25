@@ -1,14 +1,14 @@
 Chef::Log.debug("Running barracuda recipe")
 
-execute "update package index" do
-  command "apt-get update"
-  ignore_failure true
-  action :nothing
-end.run_action(:run)
+#execute "update package index" do
+  #command "apt-get update"
+ # ignore_failure true
+ # action :nothing
+#end.run_action(:run)
 
-execute "Install linux headers to allow guest additions to update properly" do
-  command "apt-get install dkms build-essential linux-headers-generic -y"
-end
+#execute "Install linux headers to allow guest additions to update properly" do
+#  command "apt-get install dkms build-essential linux-headers-generic -y"
+#end
 
 remote_file "/tmp/BOA.sh" do
   source "http://files.aegir.cc/BOA.sh.txt"
@@ -71,6 +71,6 @@ end
 
 # Rebuild VirtualBox Guest Additions
 # http://vagrantup.com/v1/docs/troubleshooting.html
-execute "Rebuild VirtualBox Guest Additions" do
-  command "sudo /etc/init.d/vboxadd setup"
-end
+#execute "Rebuild VirtualBox Guest Additions" do
+#  command "sudo /etc/init.d/vboxadd setup"
+#end
