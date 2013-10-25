@@ -85,4 +85,8 @@ Copy the key to the remote server (also see http://larsolesen.dk/node/358)
 Go to ´admin/hosting/features´under ´Experimental´ and add remote import.
 Go to ´Servers´ and add server. Choose hostmaster.
 
+Vurtualbox Guest Additions Updates
+--
+These sometimes need to be run and sometimes don't depending on existing Virtualbox/Gues Additions versions
 
+If you receive errors about incompatible guest additions or ssh access issues, then uncomment lines 3-11 and 72-76 in the barracuda recipe default.rb file and run ’vagrant reload’ 
