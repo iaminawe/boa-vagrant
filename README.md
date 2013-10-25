@@ -7,7 +7,7 @@ Using this script you can easily setup a local BOA development environment using
 - https://drupal.org/project/barracuda
 - https://drupal.org/project/octopus
 
-If you setup the hostmaster remote import module (instructions at bottom) correctly, you can import sites from a remote octopus instance that shares the same useranme as this local one.
+If you setup the hostmaster remote import module (instructions at bottom) correctly, you can import sites from a remote octopus instance that shares the same octopus username as this local one.
 
 View how this dev/local/staging workflow can work with this screencast https://vimeo.com/76546448
 
@@ -36,17 +36,20 @@ Step by Step instructions on getting up and running
 
 2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
 
-3.) Edit the Vagrantfile in the root to and add what folder you want mounted on your guest OS - in my case I have mounted the platforms directory of my octopus instance to my ~/workspaces/platforms/folder on my mac
+3.) Edit the patch filename and contents to replace all instances of iaminaweoctopus with your own octopus username https://github.com/iaminawe/boa-vagrant/tree/master/patches
 
-4.) Run "Vagrant up" from within the folder and wait around 60 mins
+4.) Edit the Vagrantfile in the root to and add what folder you want mounted on your guest OS - in my case I have mounted the platforms directory of my octopus instance to my ~/workspaces/platforms/folder on my mac
 
-5.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
+5.) Run "Vagrant up" from within the folder and wait around 60 mins
+
+6.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
 Another way to find the logins for barracuda is in /var/aegir/logs/install.log
 Another way to find the logins for an octopus instance is in /data/disk/octopus_user/logs/install.log
 
-6.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
+7.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
+Its possible to setup a wilcard dns on mac osx but I have not succeeded in doing so yet.
 
-7.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
+8.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
 
 Default Shared Folder
 --
@@ -58,6 +61,8 @@ Optional Step: Symlink custom modules to your site
 --
 
 Additionally `~/workspace/modules and ~/workspace/themes` can be mounted into `/data/all/o_custom_modules` and `/data/all/o_custom_themes` by adding them to the vagrant file.
+
+Follow the pattern of the default folder mount in the Vagrantfile to add these additional folders
 
 If you want to use any of those on your platform, you can symlink those diretories into your `sites/all` folder.
 
