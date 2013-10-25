@@ -1,12 +1,15 @@
-BOA setup by vagrant
+Barracuda Ocopus Aegir setup by Vagrant
 ==
 
-Using this you can setup a BOA server using vagrant and Chef.
+Using this you can setup a local BOA server using vagrant and Chef.
 
 Requirements
 -- 
 
 - http://vagrantup.com/
+- https://github.com/dotless-de/vagrant-vbguest
+
+- 
 
 Getting vagrant in place
 --
@@ -15,7 +18,7 @@ Make sure you have added a ´base´ box already, see http://vagrantup.com/v1/doc
 
     vagrant box add base http://files.vagrantup.com/lucid32.box
 
-When you are ready, run the following (takes about 20 minutes)
+When you are ready, run the following (takes about 60 minutes)
 
     vagrant up
 
@@ -39,9 +42,11 @@ Step by Step instructions on getting up and running
 
 Default Shared Folder
 --
-This folder is automatically mounted "~/workspace/platforms", "/data/disk/octopus_user/static", nfs: true
+This host folder "~/workspace/platforms" is automatically mounted to "/data/disk/octopus_user/static" within the guest.
+The platforms folder needs to exist before running the installer
 
-Symlink custom modules to your site
+
+Optional Step: Symlink custom modules to your site
 --
 
 Additionally `~/workspace/modules and ~/workspace/themes` can be mounted into `/data/all/o_custom_modules` and `/data/all/o_custom_themes` by adding them to the vagrant file.
@@ -56,13 +61,13 @@ Now you can use your usual development tools for your site.
 Remote import
 --
 
-Remember to check whether ´/data/disk/o1/.drush/provision/remote_import´ has been deleted.
+Remember to check whether ´/data/disk/octopus_user/.drush/provision/remote_import´ has been deleted.
 
 If you want to be able to do remote imports, you need to do the following manually:
 
 Copy the key to the remote server (also see http://larsolesen.dk/node/358)
 
-    ssh-copy-id -i .ssh/id_rsa.pub user@remote-server
+    ssh-copy-id -i .ssh/id_rsa.pub octopus_user@remote-server
 
 Go to ´admin/hosting/features´under ´Experimental´ and add remote import.
 Go to ´Servers´ and add server. Choose hostmaster.
