@@ -10,12 +10,11 @@ Requirements
 -- 
 
 - http://vagrantup.com/
-- https://github.com/dotless-de/vagrant-vbguest
 
 Getting vagrant in place
 --
 
-Make sure you have added a ´base´ box already, see http://vagrantup.com/v1/docs/getting-started/index.html
+Make sure you have added a ´base´ box already, see http://docs.vagrantup.com/v2/getting-started/
 
     vagrant box add base http://files.vagrantup.com/lucid32.box
 
@@ -30,16 +29,19 @@ Step by Step instructions on getting up and running
 
 1.) Fork this repo https://github.com/iaminawe/boa-vagrant and clone it locally
 
-2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my ocotpus username) with your octopus username and my e-mail with your e-mail - you can read more about the other parameters here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
+2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
 
 3.) Edit the Vagrantfile in the root to and add what folder you want mounted on your guest OS - in my case I have mounted the platforms directory of my octopus instance to my ~/workspaces/platforms/folder on my mac
 
-4.) Run "Vagrant up" from within the folder and wait around 30-45 mins
+4.) Run "Vagrant up" from within the folder and wait around 60 mins
 
 5.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
+Another way to find the logins for barracuda is in /var/aegir/logs/install.log
+Another way to find the logins for an octopus instance is in /data/disk/octopus_user/logs/install.log
 
 6.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
 
+7.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
 
 Default Shared Folder
 --
