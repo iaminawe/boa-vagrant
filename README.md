@@ -1,7 +1,7 @@
-Barracuda Octopus Aegir Vagrant Installer
+BOA Vagrant Installer
 ==
 
-Using this script you can easily setup a local BOA development environment using Vagrant and Chef.
+Using this script you can easily setup a local Barracuda/Octopus/Aegir development environment using Vagrant and Chef.
 
 - https://drupal.org/project/boa
 - https://drupal.org/project/barracuda
