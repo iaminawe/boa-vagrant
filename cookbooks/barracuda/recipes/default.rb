@@ -54,7 +54,7 @@ end
   end  
 
  # Only necessary as long as there is a need for it
-rvagrant semote_file "/tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch" do
+remote_file "/tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch" do
   source "https://raw.github.com/iaminawe/boa-vagrant/master/patches/fix-remote-import-hostmaster-iaminaweoctopus.patch"
   mode 00755
 end
