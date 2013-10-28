@@ -32,23 +32,22 @@ If you want to see the content in the browser on your system, you need to add th
 Step by Step instructions
 --
 
-1.) Fork this repo https://github.com/iaminawe/boa-vagrant and then clone your copy locally
+- 1.) Fork this repo https://github.com/iaminawe/boa-vagrant and then clone your copy locally
 
-2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
+- 2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
 
-3.) Edit the patch filename and contents to replace all instances of iaminaweoctopus with your own octopus username https://github.com/iaminawe/boa-vagrant/tree/master/patches
+- 3.) Edit the patch filename and contents to replace all instances of iaminaweoctopus with your own octopus username https://github.com/iaminawe/boa-vagrant/tree/master/patches
 
-4.) Run "Vagrant up" from within the folder and wait around 60 mins
+- 4.) Run "Vagrant up" from within the folder and wait around 60 mins
 
-5.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
+- 5.) When its complete you should receive e-mails with links to your new aegir instances (check spam folder if you don't get anything)
+- An alternative way to find the logins for barracuda is in /var/aegir/logs/install.log
+- An alternative way to find the logins for an octopus instance is in /data/disk/octopus_user/logs/install.log
 
-An alternative way to find the logins for barracuda is in /var/aegir/logs/install.log
-An alternative way to find the logins for an octopus instance is in /data/disk/octopus_user/logs/install.log
-
-7.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
+- 6.) In your /etc/hosts/ file point the domain names you would like to use (for main barracuda, octopus instance and each site) at 192.168.10.88
 Its possible to setup a wilcard dns on mac osx but I have not succeeded in doing so yet.
 
-8.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
+- 7.) You can rename the domain to access an octopus instance by unlocking the hostname platform in aegir and then editing the site and adding additional site aliases.
 
 Using Shared Folders
 --
@@ -63,13 +62,13 @@ The ~/workspace/platforms folder (shared folder) needs to exist before running t
 
 These are the steps to get get a mounted shared folder working.
 
-1.) Initial Vagrant Up builds the server
-2.) Edit the Vagrantfile and uncomment the shared folder code.
-3.) From the project folder - vagrant ssh in 
-4.) Run "  sudo /etc/init.d/vboxadd setup", then type "exit" to logout the guest system
-5.) Run vagrant reload to start vagrant and mount folder
-6.) Type admin password when requested
-7.) You can now make a test file in the VM static folder and check it appears in the host platforms folder
+- 1.) Initial Vagrant Up builds the server
+- 2.) Edit the Vagrantfile and uncomment the shared folder code.
+- 3.) From the project folder - vagrant ssh in 
+- 4.) Run "  sudo /etc/init.d/vboxadd setup", then type "exit" to logout the guest system
+- 5.) Run vagrant reload to start vagrant and mount folder
+- 6.) Type admin password when requested
+- 7.) You can now make a test file in the VM static folder and check it appears in the host platforms folder
 
 Troubleshooting
 --
