@@ -61,7 +61,6 @@ end
 
 execute "Apply Remote Import hostmaster patch" do
   cwd "/data/disk/iaminaweoctopus/.drush/provision/remote_import"
-  iaminawe
   command "patch -p1 < /tmp/fix-remote-import-hostmaster-iaminaweoctopus.patch"
 end
 
