@@ -32,7 +32,7 @@ If you want to see the content in the browser on your system, you need to add th
 Step by Step instructions
 --
 
-1.) Fork this repo https://github.com/iaminawe/boa-vagrant and clone it locally
+1.) Fork this repo https://github.com/iaminawe/boa-vagrant and then clone your copy locally
 
 2.) Edit this file /cookbooks/barracuda/recipes/default.rb and replace iaminaweoctopus (my octopus username) with your octopus username and my e-mail with your e-mail - you can read more about the other additional options here http://drupalcode.org/project/barracuda.git/blob/HEAD:/docs/INSTALL.txt
 
@@ -66,7 +66,7 @@ These are the steps to get get a mounted shared folder working.
 1.) Initial Vagrant Up builds the server
 2.) Edit the Vagrantfile and uncomment the shared folder code.
 3.) From the project folder - vagrant ssh in 
-4.) Run "sudo /etc/init.d/vboxadd setup", then type "exit" to logout the guest system
+4.) Run "  sudo /etc/init.d/vboxadd setup", then type "exit" to logout the guest system
 5.) Run vagrant reload to start vagrant and mount folder
 6.) Type admin password when requested
 7.) You can now make a test file in the VM static folder and check it appears in the host platforms folder
@@ -74,7 +74,9 @@ These are the steps to get get a mounted shared folder working.
 Troubleshooting
 --
 Guest additions versions can cause issues with shared folders working properly so if you get mount related errors when you run vagrant up
-Run this in the guest sudo /etc/init.d/vboxadd setup
+Run this in the guest VM
+
+    sudo /etc/init.d/vboxadd setup
 
 If the build timed out or chef failed for some reason. 
 
