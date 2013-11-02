@@ -85,6 +85,12 @@ Try and run
     
 It will re-run the chef scripts and will likely repair a broken installation.
 
+If the host machine crashes and when you start it up again the guest machine will not vagrant up and you get an error like
+vagrant up failed, /dev/vboxnetctl: no such file or directory
+
+    Follow these instructions http://stackoverflow.com/questions/18149546/vagrant-up-failed-dev-vboxnetctl-no-such-file-or-directory
+
+
 
 Remote import
 --
