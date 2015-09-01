@@ -11,7 +11,7 @@ Chef::Log.debug("Running barracuda recipe")
 #end
 
 remote_file "/tmp/BOA.sh" do
-  source "cd;wget -q -U iCab http://files.aegir.cc/BOA.sh.txt;bash BOA.sh.txt"
+  source "http://files.aegir.cc/BOA.sh.txt"
   mode 00755
 end
 
